@@ -13,11 +13,12 @@
                 <div class="logo-text">Mundial Ciclo</div>
             </div>
             <ul class="nav-links">
-                <li><a href="#hero" (click)="scrollToSection('hero')">Início</a></li>
-                <li><a href="#features" (click)="scrollToSection('features')">Recursos</a></li>
-                <li><a href="#loja" (click)="scrollToSection('loja')">Localização</a></li>
-                <li><a href="#contact" (click)="scrollToSection('contact')">Contato</a></li>
-            </ul>
+  <li><a (click)="scrollToSection('hero')">Início</a></li>
+  <li><a (click)="scrollToSection('features')">Destaques</a></li>
+  <li><a (click)="scrollToSection('loja')">Localização</a></li>
+  <li><a (click)="scrollToSection('contact')">Contato</a></li>
+</ul>
+
         </nav>
     </header>
 
@@ -40,7 +41,7 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title  ">Principais Recursos</h2>
+            <h2 class="section-title  ">Nossos destaques</h2>
             <div class="features-grid">
                 <div class="feature-card  ">
                     <div class="feature-icon">🏆</div>
