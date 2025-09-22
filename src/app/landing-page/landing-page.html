@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundial Ciclo - Sua Loja de Bicicletas</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-text">Mundial Ciclo</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" (click)="scrollToSection('hero')">Início</a></li>
+                <li><a href="#features" (click)="scrollToSection('features')">Recursos</a></li>
+                <li><a href="#loja" (click)="scrollToSection('loja')">Localização</a></li>
+                <li><a href="#contact" (click)="scrollToSection('contact')">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <span><br></span>
+
+    <!-- Hero Section -->
+   <section class="hero" id="hero">
+  <div class="hero-slide" *ngFor="let slide of slides; let i = index"
+       [ngStyle]="{'background-image': 'url(' + slide + ')'}"
+       [class.visible]="i === currentSlide">
+  </div>
+
+  <div class="hero-content">
+    <h1>Sua Aventura Começa Aqui</h1>
+    <p>Descubra a melhor seleção de peças e bicicletas para todas as suas aventuras.</p>
+    <a href="#loja" class="cta-button" (click)="scrollToSection('loja')">Saiba mais</a>
+  </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title  ">Principais Recursos</h2>
+            <div class="features-grid">
+                <div class="feature-card  ">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Qualidade</h3>
+                    <p>Trabalhamos com as melhores marcas e materiais do mercado, garantindo durabilidade e performance.</p>
+                </div>
+                <div class="feature-card  ">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Manutenção Especializada</h3>
+                    <p>Nossa equipe técnica oferece serviços completos de manutenção e reparos para sua bicicleta.</p>
+                </div>
+                <div class="feature-card  ">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Entregamos em toda Natal, com rapidez e segurança.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="loja" id="loja">
+  <div class="container">
+    <h2 class="section-title">Localização</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div style="margin-top: 2rem;">
+          <a href="https://www.google.com/maps/place/R.+Bom+Pastor,+3995+-+Bom+Pastor,+Natal+-+RN" target="_blank">
+            <img src="map.png" alt="Localização" style="max-width:100%; border-radius:8px;">
+          </a>
+          <p><strong>📍 Endereço:</strong> Rua Bom Pastor, 3995 - Bairro Bom Pastor - Natal/RN</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Nosso Contato</h2>
+            <div class="contact-content">
+                <div>
+                    <h3>Fale Conosco</h3>
+                    <p>Tem alguma dúvida ou precisa de ajuda? Nossa equipe está pronta para atendê-lo!</p>
+                    <div style="margin-top: 2rem;">
+                        <p><strong>📞 Telefone:</strong> (84) 3653-2398</p>
+                        <p><strong>⏰ Horário:</strong> Seg-Sáb 8h-18h</p>
+                    </div>
+                </div>
+                <div class="contact-form">  
+                    <div class="form-group">
+                        <button type="button" class="submit-btn-whatsapp" (click)="openWhatsApp()">WhatsApp</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="submit-btn-instagram" (click)="openInstagram()">Instagram</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mundial Ciclo - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+</body>
+</html>
