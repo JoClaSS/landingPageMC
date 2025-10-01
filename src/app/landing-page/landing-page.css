@@ -39,13 +39,13 @@
 
 
 
-  .logo-text {
-      font-size: 2rem;
-      font-weight: bold;
-      color: white;
-      display: flex;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
+.logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    display: flex;
+}
+  
 
   .nav-links {
       display: flex;
@@ -119,6 +119,9 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 10px 30px rgba(135, 206, 235, 0.3);
+    -webkit-text-stroke: 1px black;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        animation: fadeInUp 1s ease forwards;
   }
 
   .hero p {
