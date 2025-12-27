@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -8,21 +8,74 @@ import { CommonModule } from '@angular/common';
   templateUrl: './landing-page.html',
   styleUrls: ['./landing-page.css']
 })
-export class LandingPage {
+export class LandingPage implements OnInit {
   slides = [
     'bikeStreet.png',
     'bikeGrass.png'
-
   ];
 
   currentSlide = 0;
+  isScrolled = false;
+  isMobileMenuOpen = false;
 
   ngOnInit(): void {
     setInterval(() => {
       console.log('Current Slide:', this.currentSlide);
       this.currentSlide = (this.currentSlide + 1) % this.slides.length;
     }, 5000);
+
+    // Initialize scroll animations
+    this.initScrollAnimations();
   }
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.isScrolled = window.pageYOffset > 50;
+  }
+
+  initScrollAnimations(): void {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    // Observe elements for animation
+    setTimeout(() => {
+      const elements = document.querySelectorAll('.feature-card, .section-title, .product-card, .testimonial-card, .service-card');
+      elements.forEach((el) => observer.observe(el));
+    }, 100);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  testimonials = [
+    {
+      name: 'Alex Júnior',
+      rating: 5,
+      comment: 'Comprei uma bike aro 29 no mês de abril, muito boa, atendimento de primeira, preço bom, só tenho a agradecer a todos da loja sempre com total atenção e um serviço de qualidade.',
+      avatar: '👨‍💼'
+    },
+    {
+      name: 'Ana Cláudia',
+      rating: 5,
+      comment: 'A manutenção da minha bike ficou perfeita. Fui muito bem atentidade e a equipe é muito profissional e experiente, só tenho a agradecer. Recomendo a todos que amam suas bikes.',
+      avatar: '👩'
+    },
+    {
+      name: 'Raíssa Silva',
+      rating: 5,
+      comment: 'Excelente atendimento!! Encontrei a bike que eu queria com ótimo preço (melhor que em algumas lojas famosas de Natal). Saí de lá com ela montada, regulada e lubrificada. Recomendo!',
+      avatar: '🚴‍♂️'
+    }
+  ];
 
   // WhatsApp function
   openWhatsApp(): void {
@@ -37,6 +90,12 @@ export class LandingPage {
     // Substitua pelo @ do Instagram da loja
     const instagramHandle = 'mundialciclo';
     const url = `https://www.instagram.com/${instagramHandle}`;
+    window.open(url, '_blank');
+  }
+
+  // Google Maps function
+  openGoogleMaps(): void {
+    const url = 'https://www.google.com/maps/place/R.+Bom+Pastor,+3995+-+Bom+Pastor,+Natal+-+RN';
     window.open(url, '_blank');
   }
 

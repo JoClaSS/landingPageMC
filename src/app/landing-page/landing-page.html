@@ -1,115 +1,202 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundial Ciclo - Sua Loja de Bicicletas</title>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <div class="logo-text">Mundial Ciclo</div>
-            </div>
-            <ul class="nav-links">
-  <li><a (click)="scrollToSection('hero')">Início</a></li>
-  <li><a (click)="scrollToSection('features')">Destaques</a></li>
-  <li><a (click)="scrollToSection('loja')">Localização</a></li>
-  <li><a (click)="scrollToSection('contact')">Contato</a></li>
-</ul>
-
-        </nav>
-    </header>
-
-    <span><br></span>
-
-    <!-- Hero Section -->
-   <section class="hero" id="hero">
-  <div class="hero-slide" *ngFor="let slide of slides; let i = index"
-       [ngStyle]="{'background-image': 'url(' + slide + ')'}"
-       [class.visible]="i === currentSlide">
-  </div>
-
-  <div class="hero-content">
-    <h1>Sua Aventura Começa Aqui</h1>
-    <p>Descubra a melhor seleção de peças e bicicletas para todas as suas aventuras.</p>
-    <a class="cta-button" (click)="scrollToSection('contact')">Saiba mais</a>
-  </div>
-</section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title  ">Nossos destaques</h2>
-            <div class="features-grid">
-                <div class="feature-card  ">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Qualidade</h3>
-                    <p>Trabalhamos com as melhores marcas e materiais do mercado, garantindo durabilidade e performance.</p>
-                </div>
-                <div class="feature-card  ">
-                    <div class="feature-icon">🔧</div>
-                    <h3>Manutenção Especializada</h3>
-                    <p>Nossa equipe técnica oferece serviços completos de manutenção e reparos para sua bicicleta.</p>
-                </div>
-                <div class="feature-card  ">
-                    <div class="feature-icon">🚚</div>
-                    <h3>Entrega Rápida</h3>
-                    <p>Entregamos em toda Natal, com rapidez e segurança.</p>
-                </div>
-            </div>
+<!-- Header -->
+<header [class.scrolled]="isScrolled">
+    <nav class="container">
+        <div class="logo">
+            <div class="logo-text">Mundial Ciclo</div>
         </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="loja" id="loja">
-  <div class="container">
-    <h2 class="section-title">Localização</h2>
-    <div class="products-grid">
-      <div class="product-card">
-        <div style="margin-top: 2rem;">
-          <a href="https://www.google.com/maps/place/R.+Bom+Pastor,+3995+-+Bom+Pastor,+Natal+-+RN" target="_blank">
-            <img src="map.png" alt="Localização" style="max-width:100%; border-radius:8px;">
-          </a>
-          <p><strong>📍 Endereço:</strong> Rua Bom Pastor, 3995 - Bairro Bom Pastor - Natal/RN</p>
+        <ul class="nav-links" [class.mobile-open]="isMobileMenuOpen">
+            <li><a (click)="scrollToSection('hero'); toggleMobileMenu()">Início</a></li>
+            <li><a (click)="scrollToSection('features'); toggleMobileMenu()">Destaques</a></li>
+            <li><a (click)="scrollToSection('services'); toggleMobileMenu()">Serviços</a></li>
+            <li><a (click)="scrollToSection('contact'); toggleMobileMenu()">Contato</a></li>
+        </ul>
+        <div class="mobile-menu-toggle" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-      </div>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+<div class="hero-slide" *ngFor="let slide of slides; let i = index"
+     [ngStyle]="{'background-image': 'url(' + slide + ')'}"
+     [class.visible]="i === currentSlide">
+</div>
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+  <h1 class="hero-title">Sua Aventura Começa Aqui</h1>
+  <p class="hero-subtitle">Descubra a melhor seleção de peças e bicicletas para todas as suas aventuras.</p>
+  <div class="hero-buttons">
+    <a class="cta-button primary" (click)="scrollToSection('contact')">Fale Conosco</a>
+    <a class="cta-button secondary" (click)="scrollToSection('features')">Saiba Mais</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <h3>10000+</h3>
+      <p>Bikes Vendidas</p>
+    </div>
+    <div class="stat">
+      <h3>39</h3>
+      <p>Anos de Experiência</p>
+    </div>
+    <div class="stat">
+      <h3>10000+</h3>
+      <p>Clientes Satisfeitos</p>
     </div>
   </div>
+</div>
 </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Nosso Contato</h2>
-            <div class="contact-content">
-                <div>
-                    <h3>Fale Conosco</h3>
-                    <p>Tem alguma dúvida ou precisa de ajuda? Nossa equipe está pronta para atendê-lo!</p>
-                    <div style="margin-top: 2rem;">
-                        <p><strong>📞 Telefone:</strong> (84) 3653-2398</p>
-                        <p><strong>⏰ Horário:</strong> Seg-Sáb 8h-18h</p>
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <h2 class="section-title  ">Nossos destaques</h2>
+        <div class="features-grid">
+            <div class="feature-card  ">
+                <div class="feature-icon">🏆</div>
+                <h3>Qualidade</h3>
+                <p>Trabalhamos com as melhores marcas e materiais do mercado, garantindo durabilidade e performance.</p>
+            </div>
+            <div class="feature-card  ">
+                <div class="feature-icon">🔧</div>
+                <h3>Manutenção Especializada</h3>
+                <p>Nossa equipe técnica oferece serviços completos de manutenção e reparos para sua bicicleta.</p>
+            </div>
+            <div class="feature-card  ">
+                <div class="feature-icon">🚚</div>
+                <h3>Entrega Rápida</h3>
+                <p>Entregamos em toda Natal, com rapidez e segurança.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Manutenção Completa</h3>
+                <p>Serviços completos de manutenção preventiva e corretiva para sua bicicleta.</p>
+                <ul class="service-list">
+                    <li>Ajuste de freios e marchas</li>
+                    <li>Lubrificação da corrente</li>
+                    <li>Calibragem dos pneus</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Personalização</h3>
+                <p>Transforme sua bike de acordo com seu estilo e necessidades.</p>
+                <ul class="service-list">
+                    <li>Upgrades de componentes</li>
+                    <li>Pintura personalizada</li>
+                    <li>Acessórios especializados</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Reparos</h3>
+                <p>Consertos rápidos e eficientes para você voltar a pedalar.</p>
+                <ul class="service-list">
+                    <li>Troca de peças</li>
+                    <li>Soldas especializadas</li>
+                    <li>Diagnóstico técnico</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+                <div class="testimonial-content">
+                    <div class="stars">
+                        <span *ngFor="let star of [1,2,3,4,5]">⭐</span>
                     </div>
+                    <p>"{{ testimonial.comment }}"</p>
                 </div>
-                <div class="contact-form">  
-                    <div class="form-group">
-                        <button type="button" class="submit-btn-whatsapp" (click)="openWhatsApp()">WhatsApp</button>
-                    </div>
-                    <div class="form-group">
-                        <button type="button" class="submit-btn-instagram" (click)="openInstagram()">Instagram</button>
+                <div class="testimonial-author">
+                    <div class="avatar">{{ testimonial.avatar }}</div>
+                    <div class="author-info">
+                        <h4>{{ testimonial.name }}</h4>
+                        <span>Cliente Verificado</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Mundial Ciclo - Todos os direitos reservados</p>
+<!-- Contact Section -->
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">Entre em Contato Conosco</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Fale Conosco</h3>
+                <p>Tem alguma dúvida ou precisa de ajuda? Nossa equipe está pronta para atendê-lo!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(84) 3653-2398</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sábado: 8h às 18h</p>
+                        </div>
+                    </div>
+                    <div class="contact-item clickable-address" (click)="openGoogleMaps()" style="cursor: pointer; transition: all 0.3s ease; position: relative; border: 2px solid #e2e8f0; background: linear-gradient(135deg, #f8fafc, #ffffff); box-shadow: 0 4px 12px rgba(70, 130, 180, 0.15);" 
+                         onmouseover="this.style.transform='scale(1.05)'; this.style.borderColor='#4682b4'; this.style.boxShadow='0 8px 25px rgba(70, 130, 180, 0.25)';"
+                         onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#e2e8f0'; this.style.boxShadow='0 4px 12px rgba(70, 130, 180, 0.15)';">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Endereço <span style="font-size: 0.8rem; color: #4682b4; font-weight: normal;">👆 Clique para ver no mapa</span></h4>
+                            <p>Rua Bom Pastor, 3995<br>Bairro Bom Pastor - Natal/RN</p>
+                        </div>
+                        <div style="position: absolute; top: 10px; right: 15px; color: #4682b4; font-size: 1.2rem;">🗺️</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>Contato Rápido </h3>
+                <p>Clique em um dos botões abaixo para falar conosco diretamente!</p>
+                <br>
+            <div class="contact-form">
+                <div class="social-buttons">
+                    <button type="button" class="submit-btn-whatsapp" (click)="openWhatsApp()">
+                        <span class="btn-icon">💬</span>
+                        Falar no WhatsApp
+                    </button>
+                    <button type="button" class="submit-btn-instagram" (click)="openInstagram()">
+                        <span class="btn-icon">📸</span>
+                        Seguir no Instagram
+                    </button>
+                </div>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-</body>
-</html>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Mundial Ciclo - Todos os direitos reservados</p>
+    </div>
+</footer>
