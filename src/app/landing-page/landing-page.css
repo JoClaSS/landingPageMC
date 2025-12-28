@@ -607,7 +607,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0
       }
 
       .hero-title {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
       }
 
       .hero-subtitle {
@@ -650,13 +652,16 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0
       }
 
       .hero-content {
-          padding: 0 1rem;
+          padding: 1rem;
+          margin-top: 2rem;
       }
   }
 
   @media (max-width: 480px) {
       .hero-title {
-          font-size: 2rem;
+          font-size: 1.6rem;
+          line-height: 1.1;
+          margin-bottom: 1rem;
       }
 
       .section-title {
@@ -675,5 +680,21 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0
 
       .contact-item {
           padding: 1rem;
+      }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 360px) {
+      .hero-title {
+          font-size: 1.4rem;
+          line-height: 1.2;
+      }
+      
+      .hero-content {
+          padding: 0.5rem;
+      }
+      
+      .container {
+          padding: 0 10px;
       }
   }
