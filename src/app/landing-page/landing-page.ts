@@ -99,6 +99,13 @@ export class LandingPage implements OnInit {
     window.open(url, '_blank');
   }
 
+  // Google Reviews function
+  openGoogleReviews(): void {
+    // URL para buscar e ver avaliações da Mundial Ciclo no Google
+    const url = 'https://www.google.com/search?q=Mundial+Ciclo+Natal+RN+avalia%C3%A7%C3%B5es&oq=Mundial+Ciclo+Natal+RN+avalia%C3%A7%C3%B5es#lrd=0x7b2554831d1e477:0xb32843b6bfe47945,1,,,,';
+    window.open(url, '_blank');
+  }
+
   scrollToSection(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {

@@ -316,6 +316,47 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0
     font-size: 0.9rem;
 }
 
+/* Testimonials CTA */
+.testimonials-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+}
+
+.testimonials-cta-text {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.testimonials-btn-google {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+    text-decoration: none;
+}
+
+.testimonials-btn-google:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
+    background: linear-gradient(135deg, #3367d6, #2d9c47);
+}
+
+.testimonials-btn-google .btn-icon {
+    font-size: 1.2rem;
+}
+
   /* Loja Section */
   .loja {
       padding: 5rem 0;
@@ -640,6 +681,15 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0
       .services-grid,
       .testimonials-grid {
           grid-template-columns: 1fr;
+      }
+
+      .testimonials-cta {
+          padding: 1.5rem;
+      }
+
+      .testimonials-btn-google {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
       }
 
       .service-card,
